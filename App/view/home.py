@@ -10,6 +10,7 @@ from .cadastrarCurso import CadastrarCurso
 class HomePrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
+
         loadUi('App/view/ui/home.ui',self)
         
         self.btnMenu: QPushButton
