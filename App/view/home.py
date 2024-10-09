@@ -34,7 +34,7 @@ class HomePrincipal(QMainWindow):
         if self.subMenuLateral.isHidden():
             self.subMenuLateral.show()
             
-            # nomeIcone = QtGui.QPixmap("")
+            # nomeIcone = QtGui.QIcon("close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png")
             # self.btnMenu.setIcon(QtGui.QIcon(nomeIcone))
             
         else:
