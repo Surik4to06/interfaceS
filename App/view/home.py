@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import *
+from PyQt5 import QtGui
 from PyQt5.uic import loadUi
 from .cadastroPessoas import cadastroPessoas
 from .reserva import ReservaInterface
@@ -9,7 +10,10 @@ from .cadastrarCurso import CadastrarCurso
 class HomePrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi('App/view/ui/interfaceHomeV1.ui',self)
+        loadUi('App/view/ui/home.ui',self)
+        
+        self.btnMenu: QPushButton
+        self.subMenuLateral: QWidget
 
    # Criando instancias das interfaces
         self.interfCasPessoa = cadastroPessoas()
@@ -20,9 +24,22 @@ class HomePrincipal(QMainWindow):
 
         self.btnCadastrarPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
+        self.btnMenu.clicked.connect(self.abreFechaMenu)
         self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
         self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
         self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
+        
+    def abreFechaMenu(self):
+        if self.subMenuLateral.isHidden():
+            self.subMenuLateral.show()
+            
+            # nomeIcone = QtGui.QPixmap("")
+            # self.btnMenu.setIcon(QtGui.QIcon(nomeIcone))
+            
+        else:
+            self.subMenuLateral.close()
+            # nomeIcone = QtGui.QPixmap("")
+            # self.btnMenu.setIcon(QtGui.QIcon(nomeIcone))
 
     def inserirTelas(self, telas):
         for interface in telas:
